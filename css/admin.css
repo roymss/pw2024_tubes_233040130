@@ -1,0 +1,35 @@
+/* My Fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@100;300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Root */
+
+:root {
+  --my--font: "Bebas Neue", sans-serif;
+}
+
+/* My Styles */
+
+.navbar-brand {
+  font-family: var(--my--font);
+}
+
+.col-12 input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Tambah */
+
+.tambah {
+  margin-top: 7rem;
+}
+
+/* Admin Profile */
+
+.admin-profile {
+  margin-top: 100px;
+}
