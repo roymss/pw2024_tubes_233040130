@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 02, 2024 at 10:54 PM
+-- Generation Time: Jun 12, 2024 at 11:46 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -63,9 +63,31 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`id`, `gambar_produk`, `nama_produk`, `harga_produk`) VALUES
 (13, 'ip14pmm.jpeg', 'Ip 14 Promax', '29.000.000'),
-(14, 'OppoA57.jpg', 'Oppo A57 ', '2.399.000'),
-(15, 'xiaomi12lite.png', 'Xiaomi 12 Lite', '4.599.000'),
-(16, 'rogphone6.jpg', 'ROG Phone 6', '20.000.000');
+(14, 'OppoA57.jpg', 'Oppo A57 ', '2.400.000'),
+(16, 'rogphone6.jpg', 'ROG Phone 6', '20.000.000'),
+(17, 's23ultra.jpg', 'S23 Ultra', '29.000.002');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`) VALUES
+(1, 'Roy', 'Martin', 'roymartinsilaban199@gmail.com', '$2y$10$TntMat0V4Y84NWFbxOPvheVVOFWOg2ZsLce3F.ZudUp2xfzDFzdAq'),
+(2, 'Roy', 'Silaban', 'roymartin_silaban@yahoo.co.id', '$2y$10$CmO56WpvTfnCdAgwgkFhqeZRxMECQDUqSkuxdr0XG95jq1Xma7bJa');
 
 --
 -- Indexes for dumped tables
@@ -84,6 +106,13 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -97,7 +126,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
