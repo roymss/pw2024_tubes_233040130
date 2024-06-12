@@ -4,6 +4,10 @@ require 'inc/function.php';
 
 $produk = query("SELECT * FROM product");
 
+if(isset($_POST["cari"])){
+    $produk = cari($_POST["keyword"]);
+}
+
 
 ?>
 
@@ -23,15 +27,24 @@ $produk = query("SELECT * FROM product");
 
     <!-- Navbar -->
 
-    <?php include('assets/partikels/header.php') ?>
-
+    <nav class="navbar navbar-dark bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-dark" href="#">Think Tech</a>
+            <a class="login" href="assets/user/login.php">Login</a>
+        </div>
+    </nav>
     <!-- Carousel -->
 
     <?php include('assets/partikels/carousel.php') ?>
 
     <!-- Search -->
 
-    <?php include('assets/partikels/search.php') ?>
+    <div class="container">
+        <form class="search-box" action="#card" method="POST">
+            <input id="keyword" type="text" name="keyword" placeholder="Type to search..." autocomplete="off">
+            <button type="submit" name="cari" id="ajax">Search</button>
+        </form>
+    </div>
 
     <!-- Card -->
 
@@ -49,9 +62,8 @@ $produk = query("SELECT * FROM product");
 
     <?php include('assets/partikels/footer.php') ?>
 
-    <!-- Modal -->
 
-    
+
 
 
 
@@ -60,7 +72,8 @@ $produk = query("SELECT * FROM product");
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="js/index.js"></script>
+
+    <Script src="js/index.js?<?= time(); ?>"></Script>
 </body>
 
 </html>

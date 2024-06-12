@@ -2,6 +2,7 @@
 
 require '../inc/function.php';
 
+
 $id = $_GET["id"];
 
 if (isset($_POST["submit"])) {
@@ -18,12 +19,12 @@ if (isset($_POST["submit"])) {
         <script>
             alert('Data gagal ubah');
             document.location.href = '../index.php'
-        </script>
+        </script>   
 ";
     }
 }
 
-$product = query("SELECT * FROM product WHERE id = $id")[0];
+$product = query("SELECT * FROM product WHERE id = $id")[0]; 
 
 ?>
 
@@ -47,8 +48,9 @@ $product = query("SELECT * FROM product WHERE id = $id")[0];
         <h2 class="text-center mt-3">UPDATE PRODUCT</h2>
 
         <div class="row mt-4 p-2">
-            <form class="d-flex justify-content-center align-items-center flex-column gap-2" action="" method="post">
-                <input type="hidden" name="id" value="<?= $mhs["id"]; ?>">
+            <form class="d-flex justify-content-center align-items-center flex-column gap-2" action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?= $product["id"]; ?>">
+                <input type="hidden" name="gambarLama" value="<?= $product["gambar_produk"]; ?>">
                 <div class="col-12">
                     <input type="text" name="nama_produk" placeholder="enter the product name" required value="<?= $product["nama_produk"] ?>"> 
                 </div>
@@ -56,7 +58,8 @@ $product = query("SELECT * FROM product WHERE id = $id")[0];
                     <input type="text" name="harga_produk" placeholder="enter the product price" required value="<?= $product["harga_produk"] ?>"> 
                 </div>
                 <div class="col-12">
-                    <input type="file" name="gambar_produk" required>
+                    <img src="../assets/img/<?= $product['gambar_produk'] ?>" width="80px"  alt="">
+                    <input type="file" name="gambar_produk">
                 </div>
                 <button type="submit" name="submit" class="btn btn-outline-success mb-3 w-100">Update Product</button>
             </form>

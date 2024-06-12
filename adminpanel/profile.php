@@ -29,32 +29,16 @@ $result = mysqli_fetch_assoc($query);
     <!-- Navbar -->
 
     <nav class="navbar navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="#">Think Tech</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="admin_page.php">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Admin
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Admin
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="admin_page.php">Home</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -67,15 +51,15 @@ $result = mysqli_fetch_assoc($query);
             <img class="mt-4 mx-auto mb-4" src="../assets/img/<?= $result["gambar_admin"]; ?>" alt="" style="width: 12rem; height:10rem;">
             <form class="d-flex justify-content-start align-items-center flex-column w-100 gap-2" action="" method="post">
                 <label>Full Name :</label>
-                <input class="w-50" type="text" value="<?= $result["nama_lengkap"]; ?>">
+                <input class="w-50 form-control" type="text" value="<?= $result["nama_lengkap"]; ?>">
                 <label>Username :</label>
-                <input class="w-50" type="text" value="<?= $result["username"]; ?>">
+                <input class="w-50 form-control" type="text" value="<?= $result["username"]; ?>">
                 <label>Email :</label>
-                <input class="w-50" type="email" value="<?= $result["email"]; ?>">
+                <input class="w-50 form-control" type="email" value="<?= $result["email"]; ?>">
                 <label>Address :</label>
-                <textarea class="w-50" name="alamat" id=""><?= $result["alamat"]; ?></textarea>
+                <textarea class="w-50 form-control" name="alamat" id=""><?= $result["alamat"]; ?></textarea>
                 <label>Contact :</label>
-                <input class="w-50" type="number" value="<?= $result["no_telpon"]; ?>">
+                <input class="w-50 form-control" type="text" value="<?= $result["no_telpon"]; ?>">
             </form>
         </div>
     </div>

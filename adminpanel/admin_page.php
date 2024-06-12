@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["login"])) {
+    header("Location: ../assets/user/login.php");
+}
 
 require '../inc/function.php';
 
@@ -31,32 +36,16 @@ if (isset($_POST["cari"])) {
     <!-- Navbar -->
 
     <nav class="navbar navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="#">Think Tech</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Admin
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Admin
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                    <li><a class="dropdown-item" href="../assets/user/logout.php">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -68,7 +57,7 @@ if (isset($_POST["cari"])) {
         <h2 class="text-center mt-3">ADD A NEW PRODUCT</h2>
 
         <div class="row mt-4 p-2">
-            <form class="d-flex justify-content-center align-items-center flex-column gap-2" action="" method="post">
+            <form class="d-flex justify-content-center align-items-center flex-column gap-2" action="" method="post" enctype="multipart/form-data">
                 <div class="col-12">
                     <input type="text" name="nama_produk" placeholder="enter the product name" required>
                 </div>
@@ -76,7 +65,7 @@ if (isset($_POST["cari"])) {
                     <input type="text" name="harga_produk" placeholder="enter the product price" required>
                 </div>
                 <div class="col-12">
-                    <input type="file" name="gambar_produk" required>
+                    <input type="file" name="gambar_produk">
                 </div>
                 <button type="submit" name="submit" class="btn btn-outline-success mb-3 w-100">Add Product</button>
             </form>
